@@ -21,6 +21,7 @@ def brute_has_target(nums, targ):
 
 
 def tp_has_target(nums: list[int], targ: int) -> bool:
+    """Two pointers solution, to find target sum number in list"""
     left = 0
     right = len(nums) - 1
 
