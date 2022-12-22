@@ -2,15 +2,18 @@
 """
 1: Return true if a given string is a palindrome, false otherwise.
 A string is a palindrome if it reads the same forwards as backwards. That means, after reversing it, it is still the same string. For example: "abcdcba", or "racecar".
+Reviewed: 1
 """
 
 """
 2: Given a sorted array of unique integers and a target integer, return true if there exists a pair of numbers that sum to target, false otherwise. This problem is similar to Two Sum.
 For example, given nums = [1, 2, 4, 6, 8, 9, 14, 15] and target = 13, return true because 4 + 9 = 13.
+Reviewed: 1
 """
 
 """
 3: Given two sorted integer arrays, return an array that combines both of them and is also sorted.
+Reviewed: 1
 """
 
 """
@@ -42,5 +45,14 @@ After sorting, it becomes [0,1,9,16,100].
 2: You are given a binary substring s (a string containing only "0" and "1"). An operation involves flipping a "0" into a "1". What is the length of the longest substring containing only "1" after performing at most one operation?
 
 For example, given s = "1101100111", the answer is 5. If you perform the operation at index 2, the string becomes 1111100111.
+"""
 
+"""
+3: Given an array of positive integers nums and an integer k, return the number of contiguous subarrays where the product of all the elements in the subarray is strictly less than k.
+
+For example, given the input nums = [10, 5, 2, 6], k = 100, the answer is 8. The subarrays with products less than k are:
+
+[10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6]
+
+Key idea: Whenever you see a problem asking for the number of subarrays, think of this: at each index, how many valid subarrays end at this index? Let's split the 8 subarrays by their ending indices:
 """

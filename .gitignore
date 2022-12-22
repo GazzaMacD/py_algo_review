@@ -2,3 +2,4 @@ venv_py_algo
 __pycache__/
 *.py[cod]
 *$py.class
+review/

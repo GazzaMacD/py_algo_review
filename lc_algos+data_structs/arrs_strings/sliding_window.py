@@ -35,6 +35,8 @@ def find_longest_ones(s: str) -> int:
     Given max one operation involves flipping a "0" into a "1", what is the length of the longest substring containing only "1"?
 
     For example, given s = "1101100111", the answer is 5. If you perform the operation at index 2, the string becomes 1111100111.
+    Time complexity: O(n)
+    Space complexity: 0(1)
     """
     left = current = ans = 0
     for right in range(len(s)):
@@ -49,7 +51,36 @@ def find_longest_ones(s: str) -> int:
     return ans
 
 
+"""
+Given an array of positive integers nums and an integer k, return the number of contiguous subarrays where the product of all the elements in the subarray is strictly less than k.
+
+For example, given the input nums = [10, 5, 2, 6], k = 100, the answer is 8. The subarrays with products less than k are:
+
+[10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6]
+
+Key idea: Whenever you see a problem asking for the number of subarrays, think of this: at each index, how many valid subarrays end at this index? Let's split the 8 subarrays by their ending indices:
+"""
+
+
+def max_subarrays(nums_list: List[int], constraint: int) -> int:
+    if constraint <= 1:
+        return 0
+
+    left = ans = 0
+    current = 1
+    for right in range(len(nums_list)):
+        current *= nums_list[right]
+        while current >= constraint:
+            current //= nums_list[left]
+            left += 1
+        ans += right - left + 1
+    return ans
+
+
 if __name__ == "__main__":
     arr1 = [3, 1, 2, 7, 4, 2, 1, 1, 5]
     lim1 = 8
-    print(find_longest_subarray(arr1, lim1))
+    print("Longest subarray 1 ->", find_longest_subarray(arr1, lim1))
+    arr2 = [10, 5, 2, 6]
+    lim2 = 100
+    print("Most subarrays prod max 100 ->", max_subarrays(arr2, lim2))
