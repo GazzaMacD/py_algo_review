@@ -31,30 +31,28 @@ def longest_ones(nums: List[int], k: int) -> int:
     if len(nums) == 0:
         return 0
     else:
-        left = 0
+        left = right = 0
         for right in range(len(nums)):
             k -= 1 - nums[right]
-            # A negative k denotes we have consumed all allowed flips and window has
-            # more than allowed zeros, thus increment left pointer by 1 to keep the window size same.
             if k < 0:
-                # If the left element to be thrown out is zero we increase k.
                 k += 1 - nums[left]
                 left += 1
         return right - left + 1
 
 
 if __name__ == "__main__":
-    nums1 = [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0]
-    k1 = 2
-    expected1 = 6
-    answer1 = longest_ones(nums1, k1)
-    assert answer1 == expected1, f"answer does not equal {expected1}, got {answer1}"
+    nums = [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0]
+    limit = 2
+    expected = 6
+    answer = longest_ones(nums, limit)
+    assert answer == expected, f"longest_ones expected {expected}, got {answer}"
 
-    nums2 = [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
-    k2 = 3
-    expected2 = 10
-    answer2 = longest_ones(nums2, k2)
-    assert answer2 == expected2, f"answer does not equal {expected2}, got {answer2}"
+    nums = [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
+    limit = 3
+    expected = 10
+    answer = longest_ones(nums, limit)
+    assert answer == expected, f"longest_ones expected {expected}, got {answer}"
 
     # check 0 length array
     answer3 = longest_ones([], 1)
+    print("Success!")
